@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram id="JiK3rFyuh8UOXf4U1rvv" name="Page-1">
+        <mxGraphModel dx="906" dy="403" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Basic Functions of Streamlit&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="100" width="290" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="edgeStyle=none;html=1;fontSize=17;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Create a conda environment" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="190" width="250" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Install Libraries" style="whiteSpace=wrap;html=1;fontSize=17;fillColor=#647687;strokeColor=#314354;rounded=1;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="370" width="180" height="70" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
