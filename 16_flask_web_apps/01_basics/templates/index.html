@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        label {
+            font-weight: bold;
+        }
+        select, button {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Analysis App</h1>
+        <form method="post">
+            <label for="dataset">Select Dataset:</label>
+            <select name="dataset" id="dataset" onchange="this.form.submit()">
+                <option value="">--Select Dataset--</option>
+                {% for dataset in datasets %}
+                    <option value="{{ dataset }}" {% if dataset == request.form.get('dataset') %}selected{% endif %}>{{ dataset }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            {% if columns %}
+            <label for="plot_type">Select Plot Type:</label>
+            <select name="plot_type" id="plot_type">
+                <option value="scatter">Scatter Plot</option>
+                <option value="line">Line Plot</option>
+                <option value="bar">Bar Plot</option>
+                <option value="hist">Histogram</option>
+                <option value="box">Box Plot</option>
+            </select>
+            <br><br>
+            <label for="x_column">Select X Column:</label>
+            <select name="x_column" id="x_column">
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="y_column">Select Y Column:</label>
+            <select name="y_column" id="y_column">
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <button type="submit">Generate Plot</button>
+            {% endif %}
+        </form>
+        {% if plot_url %}
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Plot">
+        <a href="{{ url_for('download_plot', dataset=request.form.get('dataset'), plot_type=request.form.get('plot_type'), x_column=request.form.get('x_column'), y_column=request.form.get('y_column')) }}">
+            <button>Download Plot</button>
+        </a>
+        {% endif %}
+    </div>
+</body>
+</html>
