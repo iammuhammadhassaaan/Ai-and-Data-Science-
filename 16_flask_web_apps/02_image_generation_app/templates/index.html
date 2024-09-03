@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generation App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #4a90e2;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"], select {
+            padding: 10px;
+            width: 30%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4a90e2;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #357abd;
+        }
+        .image-container {
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Images from Text</h1>
+        <form action="/" method="post">
+            <input type="text" name="prompt" placeholder="Enter your prompt here" required value="{{ prompt }}">
+            <br>
+            <label for="size">Size:</label>
+            <select name="size" id="size">
+                <option value="small" {% if size == 'small' %}selected{% endif %}>Small</option>
+                <option value="medium" {% if size == 'medium' %}selected{% endif %}>Medium</option>
+                <option value="large" {% if size == 'large' %}selected{% endif %}>Large</option>
+            </select>
+            <br>
+            <label for="tone">Tone:</label>
+            <select name="tone" id="tone">
+                <option value="bright" {% if tone == 'bright' %}selected{% endif %}>Bright</option>
+                <option value="dark" {% if tone == 'dark' %}selected{% endif %}>Dark</option>
+                <option value="vintage" {% if tone == 'vintage' %}selected{% endif %}>Vintage</option>
+            </select>
+            <br>
+            <input type="submit" value="Generate Image">
+        </form>
+        
+        {% if image_data %}
+        <div class="image-container">
+            <h2>Generated Image</h2>
+            <img src="data:image/png;base64,{{ image_data }}" alt="Generated Image">
+            <br>
+            <a href="/download?image_data={{ image_data }}" download="generated_image.png">
+                <button>Download Image</button>
+            </a>
+        </div>
+        {% endif %}
+        
+        <div class="footer">
+            <p>&copy; 2024 Image Generation App. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
