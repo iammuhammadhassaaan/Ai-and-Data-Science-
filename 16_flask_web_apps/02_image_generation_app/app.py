@@ -12,7 +12,7 @@ API_URL = "https://api-inference.huggingface.co/models/CompVis/stable-diffusion-
 API_TOKEN = "YOUR_HUGGINGFACE_API_TOKEN"  # Replace with your Hugging Face API token
 
 def generate_image(prompt, size, tone):
-    headers = {"Authorization": f"Bearer {API_TOKEN}"}
+    headers = {"Authorization": f"Bearer {API_TOKEN}"} 
     payload = {"inputs": prompt, "parameters": {"size": size, "tone": tone}}
     response = requests.post(API_URL, headers=headers, json=payload)
     response.raise_for_status()  # Raise an error for failed requests
